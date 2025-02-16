@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { apiGet } from "../utils/api";
 import MonsterCard from "./Monstercard";
 
+//return all monsters
 function MonsterList() {
 
     const [monsters, setMonsters] = useState([]);
     const [selectedMonster, setSelectedMonster] = useState('aboleth');
-    const [filteredMonsters, setFilteredMonsters] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const monstersPerPage = 25;
@@ -35,8 +35,6 @@ function MonsterList() {
         if (currentPage > 1) setCurrentPage(currentPage - 1);
     };
 
-
-    //if (!monsters) return <p>Fetching monsters...</p>; // while fetching data it will say so, si I know it is doing something
     return (
         <div>
             <h1 style={{ color: "red" }} className="text-center my-3">Dungeons & Dragons Monsters selection</h1>

@@ -11,7 +11,7 @@ function FilteredMonsterList() {
     const [isLoading, setIsLoading] = useState(true);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const monstersPerPage = 25;
+    const monstersPerPage = 15;
 
     //for fetching only monsters with image
     useEffect(() => {
@@ -27,8 +27,8 @@ function FilteredMonsterList() {
                     data.results.map(async (monster) => {
                         const details = await apiGet(`https://www.dnd5eapi.co${monster.url}`);
                         return { ...monster, image: details.image }; // Add the image property
-                      })
-                    );
+                    })
+                );
 
                 // Step 3: Filter monsters with images
                 const monstersWithImages = monsterDetails.filter((monster) => monster.image);
@@ -58,8 +58,10 @@ function FilteredMonsterList() {
 
     return (
         <div>
-            <h1 style={{ color: "red" }} className="text-center my-3">Dungeons & Dragons Monsters selection</h1>
-            <p className="text-center my-3">(only monsters with available image)</p>
+            <div className="text-center my-3">
+                <h1 style={{ color: "red" }} >Dungeons & Dragons Monsters selection</h1>
+                <small className="text-center my-3">(only monsters with available image)</small>
+            </div>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col">
@@ -71,6 +73,7 @@ function FilteredMonsterList() {
                                 <p className="mt-2">Fetching monsters...</p>
                             </div>
                         ) : (
+
                             <ul>
                                 {currentFilteredMonsters.map((monster) => (
                                     <li
@@ -85,9 +88,7 @@ function FilteredMonsterList() {
                         )}
                     </div>
                     {selectedMonster && (
-                        <div className="col">
-                            <MonsterCard monsterIndex={selectedMonster} />
-                        </div>
+                        <MonsterCard monsterIndex={selectedMonster} />
                     )}
                 </div>
             </div>

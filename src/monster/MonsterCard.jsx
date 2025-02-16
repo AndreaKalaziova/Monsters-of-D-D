@@ -20,7 +20,7 @@ function MonsterCard({ monsterIndex }) {
     const alignmentColor = monster?.alignment ? TYPE_ALIGNMENT[monster.alignment] || "#a0a0a3" : "#a0a0a3"; // Default to grey
 
     return (
-        <div className="card" style={{ width: "30rem", height: "40rem" }}>
+        <div className="card, col-md-4 col-sm-12">
             {isLoading ? (
                 <div className="text-center my-3">
                     <div className="spinner-border" role="status">
@@ -29,7 +29,7 @@ function MonsterCard({ monsterIndex }) {
                     <p className="mt-2">Fetching details...</p>
                 </div>
             ) : (
-                <div className="text-center">
+                <div className="card h-100, text-center">
                     <img
                         src={`https://www.dnd5eapi.co${monster.image}`}
                         className="card-img-top"
